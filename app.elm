@@ -28,6 +28,7 @@ model =
 type Msg
     = Increment
     | Decrement
+    | Clear
 
 
 update : Msg -> Model -> Model
@@ -38,6 +39,9 @@ update msg model =
 
         Decrement ->
             model - 1
+
+        Clear ->
+            model =| 0
 
 
 
@@ -50,4 +54,5 @@ view model =
         [ button [ onClick Decrement ] [ text "-1" ]
         , div [] [ text (toString model) ]
         , button [ onclick Increment ] [ text "+1" ]
+        , button [ onclick Clear ] [ text "clear" ]
         ]
